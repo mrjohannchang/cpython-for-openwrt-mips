@@ -217,11 +217,6 @@ class PyBuildExt(build_ext):
             # re-compile extensions if a header file has been changed
             ext.depends.extend(headers)
 
-            # If a module has already been built statically,
-            # don't build it here
-            if ext.name in sys.builtin_module_names:
-                self.extensions.remove(ext)
-
         # Parse Modules/Setup and Modules/Setup.local to figure out which
         # modules are turned on in the file.
         remove_modules = []
