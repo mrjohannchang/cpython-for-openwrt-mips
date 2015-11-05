@@ -20,5 +20,7 @@ cp -r "${ROOTFS}" "${_BUILD}"
 
 CONFIG_SITE=config.site CC="${TOOLCHAIN}/bin/mipsel-linux-gcc" CXX="${TOOLCHAIN}/bin/mipsel-linux-g++" AR="${TOOLCHAIN}/bin/mipsel-linux-ar" RANLIB="${TOOLCHAIN}/bin/mipsel-linux-ranlib" ./configure --host=mipsel-linux --build=x86_64-linux-gnu --disable-ipv6
 
+export PYTHON_XCOMPILE_DEPENDENCIES_PREFIX="${_BUILD_ROOTFS}"
+
 make BLDSHARED="${TOOLCHAIN}/bin/mipsel-linux-gcc -shared" CROSS_COMPILE="${TOOLCHAIN}/bin/mipsel-linux-" HOSTARCH=mipsel-linux BUILDARCH=x86_64-linux-gnu
 make install BLDSHARED="${TOOLCHAIN}/bin/mipsel-linux-gcc -shared" CROSS_COMPILE="${TOOLCHAIN}/bin/mipsel-linux-" prefix="${_BUILD}/python" ENSUREPIP=no
