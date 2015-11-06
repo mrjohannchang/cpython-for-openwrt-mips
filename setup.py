@@ -215,10 +215,11 @@ class PyBuildExt(build_ext):
             # platform specific include directories
             ext.include_dirs.extend(incdirlist)
 
-            # If a module has already been built statically,
-            # don't build it here
-            if ext.name in sys.builtin_module_names:
-                self.extensions.remove(ext)
+            if not cross_compiling:
+                # If a module has already been built statically,
+                # don't build it here
+                if ext.name in sys.builtin_module_names:
+                    self.extensions.remove(ext)
 
         # Parse Modules/Setup and Modules/Setup.local to figure out which
         # modules are turned on in the file.
