@@ -2,6 +2,8 @@
 
 set -e
 
+touch Include/graminit.h
+
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 TOOLCHAIN="${DIR}/../mipsel-toolchain"
 ROOTFS="${DIR}/../rootfs"
